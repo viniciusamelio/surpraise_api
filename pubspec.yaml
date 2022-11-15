@@ -1,0 +1,24 @@
+name: surpraise_api
+publish_to: none
+description: A sample command-line application.
+version: 1.0.0
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies:
+  dotenv: ^4.0.1
+  scouter: ^1.0.4+3
+  surpraise_backend_dependencies:
+    git:
+      git@github.com:viniciusamelio/surpraise_backend_dependencies.git
+  surpraise_core:
+    git:
+      git@github.com:viniciusamelio/surpraise_core.git
+  surpraise_infra:
+    git:
+      git@github.com:viniciusamelio/surpraise_infra.git
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.16.0
