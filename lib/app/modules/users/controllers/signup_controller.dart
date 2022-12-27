@@ -7,6 +7,16 @@ import 'package:surpraise_infra/surpraise_infra.dart';
 @HttpController()
 class SignupController extends RestController {
   SignupController() {
+    inject<EventBus>(
+      SingletonInjection(
+        StreamEventBus(),
+      ),
+    );
+    inject<IdService>(
+      SingletonInjection(
+        UuidService(),
+      ),
+    );
     _repositoriesInjections();
     _usecasesInjections();
   }
@@ -30,7 +40,7 @@ class SignupController extends RestController {
           Mongo(
             Db(
               Env.mongoUrl,
-            ),
+            )..open(),
           ),
         ),
       ),
@@ -45,10 +55,17 @@ class SignupController extends RestController {
     );
   }
 
-  @Get("/")
-  save(HttpRequest request) async {
-    return {
-      "ping": Env.mongoUrl,
-    };
+  @Post("/")
+  save(@Body() CreateUserInput user) async {
+    final usecase = injected<CreateUserUsecase>();
+    final result = await usecase(user);
+
+    return result.fold(
+      (left) => {
+        "httpStatus": 400,
+        "error": left,
+      },
+      (right) => right,
+    );
   }
 }
