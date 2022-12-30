@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   dotenv: ^4.0.1
-  scouter: ^1.1.1
+  scouter: ^1.1.1+1
   surpraise_backend_dependencies:
     git:
       git@github.com:viniciusamelio/surpraise_backend_dependencies.git
