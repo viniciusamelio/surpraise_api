@@ -29,5 +29,20 @@ class CommunityModule extends Module with Injectable {
             ),
           ),
         );
+        inject<DeleteCommunityService>(
+          FactoryInjection(
+            () => DeleteCommunityService(),
+          ),
+        );
+        inject<DeleteCommunityUsecase>(
+          FactoryInjection(
+            () => DbDeleteCommunityUsecase(
+              deleteCommunityRepository: injected<CommunityRepository>(),
+              findCommunityRepository: injected<CommunityRepository>(),
+              deleteCommunityService: injected<DeleteCommunityService>(),
+              eventBus: injected(),
+            ),
+          ),
+        );
       };
 }

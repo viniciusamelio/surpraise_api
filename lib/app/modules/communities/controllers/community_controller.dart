@@ -14,4 +14,17 @@ class CommunityController extends RestController {
       (right) => right,
     );
   }
+
+  @Delete("/:id")
+  void delete(String id) async {
+    final usecase = injected<DeleteCommunityUsecase>();
+    final deletedCommunityOrError = await usecase(
+      DeleteCommunityInput(id: id),
+    );
+
+    return deletedCommunityOrError.fold(
+      (left) => ErrorDto.from400(left),
+      (right) => right,
+    );
+  }
 }

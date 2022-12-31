@@ -449,7 +449,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "2844c0cc1fb77c2ce86bc347529593766a3405d5"
+      resolved-ref: "8b3094fcc1a1dd14c33bdb036def8b678e08a370"
       url: "git@github.com:viniciusamelio/surpraise_core.git"
     source: git
     version: "1.0.0"
