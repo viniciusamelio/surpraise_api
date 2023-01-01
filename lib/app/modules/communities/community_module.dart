@@ -44,5 +44,14 @@ class CommunityModule extends Module with Injectable {
             ),
           ),
         );
+        inject<AddMembersUsecase>(
+          FactoryInjection(
+            () => DbAddMembersUsecase(
+              addMembersRepository: injected<CommunityRepository>(),
+              findCommunityRepository: injected<CommunityRepository>(),
+              eventBus: injected(),
+            ),
+          ),
+        );
       };
 }
