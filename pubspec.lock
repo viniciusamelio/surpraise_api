@@ -7,7 +7,7 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "51.0.0"
+    version: "52.0.0"
   alfred:
     dependency: transitive
     description:
@@ -21,7 +21,7 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.3.1"
+    version: "5.4.0"
   args:
     dependency: transitive
     description:
@@ -449,7 +449,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "8b3094fcc1a1dd14c33bdb036def8b678e08a370"
+      resolved-ref: f75c6d4dcbb909a5b5f4e46a95599c15e4ac70eb
       url: "git@github.com:viniciusamelio/surpraise_core.git"
     source: git
     version: "1.0.0"
@@ -458,7 +458,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: f3f3d2a0e10bfe6e91dc681714d55679fdc4ef33
+      resolved-ref: d220f5ce158fe5226455c30504c25fd4b7c7e777
       url: "git@github.com:viniciusamelio/surpraise_infra.git"
     source: git
     version: "1.0.0"

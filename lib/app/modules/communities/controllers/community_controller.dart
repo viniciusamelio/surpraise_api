@@ -1,7 +1,10 @@
 import 'package:scouter/scouter.dart';
+import 'package:surpraise_core/surpraise_core.dart';
+
 import 'package:surpraise_api/app/core/dtos/dtos.dart';
 import 'package:surpraise_api/app/modules/communities/mappers/member_mapper.dart';
-import 'package:surpraise_core/surpraise_core.dart';
+
+import '../dtos/dtos.dart';
 
 @HttpController()
 class CommunityController extends RestController {
@@ -37,6 +40,22 @@ class CommunityController extends RestController {
     );
 
     return addedMembersOrError.fold(
+      (left) => ErrorDto.from400(left),
+      (right) => right,
+    );
+  }
+
+  @Patch("/members/remove")
+  void removeMembers(@Body() RemoveMembersDto input) async {
+    final usecase = injected<RemoveMembersUsecase>();
+    final removedMembersResultOrError = await usecase(
+      RemoveMembersInput(
+        communityId: input.communityId,
+        memberIds: input.memberIds.cast<String>(),
+      ),
+    );
+
+    return removedMembersResultOrError.fold(
       (left) => ErrorDto.from400(left),
       (right) => right,
     );

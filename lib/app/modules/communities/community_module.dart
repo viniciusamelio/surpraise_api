@@ -4,8 +4,6 @@ import 'package:surpraise_core/surpraise_core.dart';
 import 'package:surpraise_infra/surpraise_infra.dart';
 
 class CommunityModule extends Module with Injectable {
-  CommunityModule();
-
   @override
   List<RestController> get controllers => [
         CommunityController(),
@@ -48,6 +46,15 @@ class CommunityModule extends Module with Injectable {
           FactoryInjection(
             () => DbAddMembersUsecase(
               addMembersRepository: injected<CommunityRepository>(),
+              findCommunityRepository: injected<CommunityRepository>(),
+              eventBus: injected(),
+            ),
+          ),
+        );
+        inject<RemoveMembersUsecase>(
+          FactoryInjection(
+            () => DbRemoveMembersUsecase(
+              removeMembersRepository: injected<CommunityRepository>(),
               findCommunityRepository: injected<CommunityRepository>(),
               eventBus: injected(),
             ),
