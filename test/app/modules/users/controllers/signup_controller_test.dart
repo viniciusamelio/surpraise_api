@@ -6,12 +6,13 @@ void main() {
   group(
     "SignUp Controller: ",
     () {
+      late String createdId;
       setUpAll(() async {
         await startTestApplication();
       });
 
       test(
-        "/user/signup should return payload contaning created object, status 200, when object is following the expected format",
+        "[POST] /user/signup should return payload contaning created object, status 200, when object is following the expected format",
         () async {
           final result = await dio.post(
             "/user/signup",
@@ -21,6 +22,7 @@ void main() {
               "email": "vinicius.amelio@zoho.com"
             },
           );
+          createdId = result.data["id"];
 
           expect(result.statusCode, equals(200));
           expect(result.data["id"], isNotNull);
@@ -29,7 +31,7 @@ void main() {
       );
 
       test(
-        "/user/signup should return payload contaning error message when object does not follow the expected format",
+        "[POST] /user/signup should return payload contaning error message when object does not follow the expected format",
         () async {
           final result = await dio.post(
             "/user/signup",
@@ -44,7 +46,7 @@ void main() {
       );
 
       test(
-        "/user/signup should return payload contaning error message when object contains invalid value",
+        "[POST] /user/signup should return payload contaning error message when object contains invalid value",
         () async {
           final result = await dio.post(
             "/user/signup",
@@ -55,6 +57,41 @@ void main() {
             },
           );
 
+          expect(result.statusCode, equals(400));
+          expect(result.data.containsKey("error"), isTrue);
+        },
+      );
+
+      test(
+        "[PUT] /user/signup should return a payload containing an error message when object contains an invalid value",
+        () async {
+          final result = await dio.put(
+            "/user/signup",
+            data: {
+              "id": createdId,
+              "tag": "@john_doe",
+              "name": "John Doe",
+              "email": "john@doe.com",
+            },
+          );
+          expect(result.statusCode, equals(200));
+          expect(result.data.containsKey("error"), isFalse);
+          expect(result.data["name"], equals("John Doe"));
+        },
+      );
+
+      test(
+        "[PUT] /user/signup should return payload containing created when object is according to expected",
+        () async {
+          final result = await dio.put(
+            "/user/signup",
+            data: {
+              "id": "500",
+              "tag": "#invalid",
+              "name": "John Doe",
+              "email": "john@doe.com",
+            },
+          );
           expect(result.statusCode, equals(400));
           expect(result.data.containsKey("error"), isTrue);
         },
