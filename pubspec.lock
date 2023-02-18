@@ -127,6 +127,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  faker:
+    dependency: "direct dev"
+    description:
+      name: faker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   file:
     dependency: transitive
     description:
