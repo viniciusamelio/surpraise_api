@@ -1,14 +1,14 @@
 import 'package:scouter/scouter.dart';
 import 'package:surpraise_api/app/modules/users/controllers/signup_controller.dart';
+import 'package:surpraise_api/app/modules/users/controllers/user_controller.dart';
 import 'package:surpraise_core/surpraise_core.dart';
 import 'package:surpraise_infra/surpraise_infra.dart';
 
 class UserModule extends Module with Injectable {
-  UserModule({super.preffix = "user"});
-
   @override
   List<RestController> get controllers => [
         SignupController(),
+        UserController(),
       ];
 
   @override
@@ -33,6 +33,13 @@ class UserModule extends Module with Injectable {
           FactoryInjection(
             () => DbEditUserUsecase(
               editUserRepository: injected<UserRepository>(),
+            ),
+          ),
+        );
+        inject<GetUserQuery>(
+          FactoryInjection(
+            () => GetUserQuery(
+              databaseDatasource: injected(),
             ),
           ),
         );
