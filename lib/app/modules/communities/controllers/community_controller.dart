@@ -3,6 +3,7 @@ import 'package:surpraise_core/surpraise_core.dart';
 
 import 'package:surpraise_api/app/core/dtos/dtos.dart';
 import 'package:surpraise_api/app/modules/communities/mappers/member_mapper.dart';
+import 'package:surpraise_infra/surpraise_infra.dart';
 
 import '../dtos/dtos.dart';
 
@@ -29,6 +30,39 @@ class CommunityController extends RestController {
     return deletedCommunityOrError.fold(
       (left) => ErrorDto.from400(left),
       (right) => right,
+    );
+  }
+
+  @Get("/:id")
+  get(String id) async {
+    final query = injected<GetCommunityQuery>();
+    final communityOrError = await query(
+      GetCommunityInput(
+        id: id,
+      ),
+    );
+
+    return communityOrError.fold(
+      (left) => ErrorDto.from400(left),
+      (right) => HttpResponse(body: right.value),
+    );
+  }
+
+  @Get("/user/:userId")
+  getByUser(String userId) async {
+    final query = injected<GetCommunitiesByUserQuery>();
+    final communitiesOrError = await query(
+      GetCommunitiesByUserInput(
+        id: userId,
+        asOwner: true,
+      ),
+    );
+
+    return communitiesOrError.fold(
+      (left) => ErrorDto.from400(left),
+      (right) => HttpResponse(body: {
+        "communities": right.value,
+      }),
     );
   }
 

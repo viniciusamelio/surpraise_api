@@ -60,5 +60,19 @@ class CommunityModule extends Module with Injectable {
             ),
           ),
         );
+        inject<GetCommunitiesByUserQuery>(
+          FactoryInjection(
+            () => GetCommunitiesByUserQuery(
+              databaseDatasource: injected(),
+            ),
+          ),
+        );
+        inject<GetCommunityQuery>(
+          FactoryInjection(
+            () => GetCommunityQuery(
+              databaseDatasource: injected(),
+            ),
+          ),
+        );
       };
 }
