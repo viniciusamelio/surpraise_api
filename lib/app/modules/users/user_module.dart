@@ -6,6 +6,8 @@ import 'package:surpraise_infra/surpraise_infra.dart';
 
 class UserModule extends Module with Injectable {
   @override
+  String? get preffix => "user";
+  @override
   List<RestController> get controllers => [
         SignupController(),
         UserController(),

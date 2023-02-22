@@ -7,7 +7,7 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "53.0.0"
+    version: "54.0.0"
   alfred:
     dependency: transitive
     description:
@@ -21,7 +21,7 @@ packages:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.5.0"
+    version: "5.6.0"
   args:
     dependency: transitive
     description:
@@ -42,7 +42,7 @@ packages:
       name: basic_utils
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.5.0"
+    version: "5.5.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -371,7 +371,7 @@ packages:
       name: scouter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.2+1"
+    version: "1.1.2+4"
   shelf:
     dependency: transitive
     description:
@@ -531,7 +531,7 @@ packages:
       name: vm_service
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "11.0.1"
+    version: "11.1.0"
   vy_string_utils:
     dependency: transitive
     description:

@@ -1,8 +1,8 @@
-import 'package:dio/dio.dart';
 import 'package:faker/faker.dart';
 import 'package:test/test.dart';
 
 import '../../../../test_application.dart';
+import '../../../../test_utils.dart';
 
 void main() {
   group(
@@ -11,18 +11,6 @@ void main() {
       setUpAll(() async {
         await startTestApplication();
       });
-
-      Future<Response> createCommunity() async {
-        return await dio.post(
-          "/community",
-          data: {
-            "ownerId": faker.guid.guid(),
-            "description": faker.lorem.words(3).toString(),
-            "title": "API Test",
-            "planMemberLimit": 10,
-          },
-        );
-      }
 
       test(
         "[POST] /community should return error when object is an invalid one",
@@ -40,10 +28,11 @@ void main() {
       test(
         "[POST] /community should return payload containing created object when sent object is a valid one",
         () async {
-          final result = await createCommunity();
+          final owner = await createUser();
+          final result = await createCommunity(owner.body["id"]);
 
-          expect(result.statusCode, equals(200));
-          expect(result.data.containsKey("id"), isTrue);
+          expect(result.status, equals(200));
+          expect(result.body.containsKey("id"), isTrue);
         },
       );
 
@@ -51,13 +40,10 @@ void main() {
         "[DELETE] /community should return payload containing error when payload contains an unknown user id",
         () async {
           final result = await dio.delete(
-            "/community",
-            data: {
-              "id": faker.guid.guid(),
-            },
+            "/community/${faker.guid.guid().trim()}",
           );
 
-          expect(result.statusCode, equals(404));
+          expect(result.statusCode, equals(400));
         },
       );
 

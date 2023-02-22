@@ -9,7 +9,7 @@ environment:
 dependencies:
   dio: ^4.0.6
   dotenv: ^4.0.1
-  scouter: ^1.1.1+2
+  scouter: ^1.1.2+4
   surpraise_backend_dependencies:
     git:
       git@github.com:viniciusamelio/surpraise_backend_dependencies.git

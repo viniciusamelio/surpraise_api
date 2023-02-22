@@ -4,6 +4,8 @@ import 'package:surpraise_core/surpraise_core.dart';
 
 @HttpController()
 class SignupController extends RestController {
+  @override
+  String? get preffix => "signup";
   @Post("/")
   save(@Body() CreateUserInput user) async {
     final usecase = injected<CreateUserUsecase>();
