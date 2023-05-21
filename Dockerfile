@@ -1,5 +1,6 @@
-FROM dart:stable AS build
 ARG MONGO_URL
+
+FROM dart:stable AS build
 
 WORKDIR /app
 COPY pubspec.* ./
