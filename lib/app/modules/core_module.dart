@@ -8,7 +8,19 @@ class CoreModule extends Module with Injectable {
   CoreModule({super.preffix = "core"});
 
   @override
-  void Function()? get init => () {
+  Future<void> Function()? get init => () async {
+        final mongodb = (await Db.create(
+          Env.mongoUrl,
+        ))
+          ..open();
+        inject<DatabaseDatasource>(
+          SingletonInjection(
+            MongoDatasource(
+              Mongo(mongodb),
+            ),
+          ),
+        );
+
         inject<EventBus>(
           SingletonInjection(
             StreamEventBus(),
@@ -17,17 +29,6 @@ class CoreModule extends Module with Injectable {
         inject<IdService>(
           SingletonInjection(
             UuidService(),
-          ),
-        );
-        inject<DatabaseDatasource>(
-          SingletonInjection(
-            MongoDatasource(
-              Mongo(
-                Db(
-                  Env.mongoUrl,
-                )..open(),
-              ),
-            ),
           ),
         );
       };

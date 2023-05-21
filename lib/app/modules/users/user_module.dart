@@ -14,7 +14,7 @@ class UserModule extends Module with Injectable {
       ];
 
   @override
-  void Function()? get init => () {
+  Future<void> Function()? get init => () async {
         inject<UserRepository>(
           SingletonInjection(
             UserRepository(

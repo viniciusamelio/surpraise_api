@@ -8,7 +8,7 @@ class PraiseModule extends Module with Injectable {
   List<RestController> get controllers => [PraiseController()];
 
   @override
-  void Function()? get init => () {
+  Future<void> Function()? get init => () async {
         inject<PraiseRepository>(
           FactoryInjection(
             () => PraiseRepository(

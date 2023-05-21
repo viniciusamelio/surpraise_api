@@ -10,7 +10,7 @@ class CommunityModule extends Module with Injectable {
       ];
 
   @override
-  void Function() get init => () {
+  Future<void> Function() get init => () async {
         inject<CommunityRepository>(
           SingletonInjection(
             CommunityRepository(
