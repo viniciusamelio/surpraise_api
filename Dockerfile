@@ -1,5 +1,5 @@
-ARG mongo_url
 FROM dart:stable AS build
+ARG mongo_url
 
 WORKDIR /app
 COPY pubspec.* ./
