@@ -1,7 +1,10 @@
+import 'dart:io';
+
 abstract class Env {
   static late String mongoUrl;
 
   static Future<void> init([bool test = false]) async {
-    mongoUrl = String.fromEnvironment("mongo_url");
+    mongoUrl = Platform.environment["mongo_url"] ??
+        String.fromEnvironment("mongo_url");
   }
 }
