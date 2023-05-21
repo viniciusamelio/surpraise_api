@@ -16,5 +16,8 @@ final appModule = AppModule(
 
 Future<void> startApp() async {
   await Env.init();
-  await runServer(appModule, port: 8080);
+  await runServer(
+    appModule,
+    port: int.fromEnvironment("port", defaultValue: 8080),
+  );
 }
