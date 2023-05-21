@@ -1,5 +1,5 @@
 FROM dart:stable AS build
-ARG mongo_url=${{mongo_url}}
+ARG mongo_url
 
 WORKDIR /app
 COPY pubspec.* ./
