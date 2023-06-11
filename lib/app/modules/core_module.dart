@@ -12,7 +12,7 @@ class CoreModule extends Module with Injectable {
         final mongodb = (await Db.create(
           Env.mongoUrl,
         ))
-          ..open();
+          ..open(tlsAllowInvalidCertificates: true);
         inject<DatabaseDatasource>(
           SingletonInjection(
             MongoDatasource(
