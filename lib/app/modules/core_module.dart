@@ -9,10 +9,10 @@ class CoreModule extends Module with Injectable {
 
   @override
   Future<void> Function()? get init => () async {
-        final mongodb = (await Db.create(
+        final mongodb = (Db(
           Env.mongoUrl,
         ))
-          ..open(tlsAllowInvalidCertificates: true);
+          ..open();
         inject<DatabaseDatasource>(
           SingletonInjection(
             MongoDatasource(
