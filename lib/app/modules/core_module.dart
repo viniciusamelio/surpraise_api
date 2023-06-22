@@ -17,6 +17,7 @@ class CoreModule extends Module with Injectable {
           SingletonInjection(
             MongoDatasource(
               Mongo(mongodb),
+              Env.mongoUrl,
             ),
           ),
         );
