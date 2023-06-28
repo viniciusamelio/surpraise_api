@@ -48,7 +48,7 @@ class PraiseController extends RestController {
     return result.fold(
       (left) => ErrorDto.from400(left),
       (right) => HttpResponse(body: {
-        "communities": right.value,
+        "praises": right.value,
       }),
     );
   }
@@ -68,7 +68,7 @@ class PraiseController extends RestController {
     return result.fold(
       (left) => ErrorDto.from400(left),
       (right) => HttpResponse(body: {
-        "communities": right.value,
+        "praises": right.value,
       }),
     );
   }
