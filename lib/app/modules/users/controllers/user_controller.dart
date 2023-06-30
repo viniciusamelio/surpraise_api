@@ -19,4 +19,21 @@ class UserController extends RestController {
       (right) => HttpResponse(body: right.value),
     );
   }
+
+  @Get("/tag/:tag")
+  getByTag(String tag) async {
+    final query = injected<GetUserByTagQuery>();
+    final result = await query(
+      GetUserByTagQueryInput(
+        tag: tag,
+      ),
+    );
+
+    return result.fold(
+      (left) => ErrorDto.from400(left),
+      (right) => HttpResponse(
+        body: right.value,
+      ),
+    );
+  }
 }

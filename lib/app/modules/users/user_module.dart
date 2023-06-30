@@ -45,5 +45,12 @@ class UserModule extends Module with Injectable {
             ),
           ),
         );
+        inject<GetUserByTagQuery>(
+          FactoryInjection(
+            () => GetUserByTagQuery(
+              databaseDatasource: injected(),
+            ),
+          ),
+        );
       };
 }
