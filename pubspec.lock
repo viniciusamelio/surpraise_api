@@ -536,7 +536,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "1cbb7aac4f1a4f93e3a7f9217d1231e77d4e5fcb"
+      resolved-ref: "52b13239f4c1677ac3a9ea0b7a3d2020558296b6"
       url: "https://github.com/viniciusamelio/surpraise_infra"
     source: git
     version: "1.0.0"
