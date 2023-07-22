@@ -1,6 +1,12 @@
 {
     "name": "Surpraise API",
     "description": "API HTTP do projeto Surpraise",
-    "theme" : "#7276DA"
+    "theme" : "#7276DA",
+    "sidebar" : [
+      ["Contato", "/contact"],
+      ["API", 
+        ["Praises", "/praises"]
+      ]
+    ]
   }
   
