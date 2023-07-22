@@ -4,8 +4,9 @@
     "theme" : "#7276DA",
     "sidebar" : [
       ["Contato", "/contact"],
-      ["API", 
-        ["Praises", "/resources/praises"]
+      ["API", [
+          ["Praises", "/resources/praises"]
+        ]
       ]
     ]
   }
