@@ -5,7 +5,7 @@
     "sidebar" : [
       ["Contato", "/contact"],
       ["API", 
-        ["Praises", "/praises"]
+        ["Praises", "/resources/praises"]
       ]
     ]
   }
