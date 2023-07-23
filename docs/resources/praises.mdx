@@ -7,6 +7,7 @@
 **ROUTE:** /praise <br/>
 **METHOD**: POST <br/>
 
+<Accordion title="Dados da requisição">
 **Dart Class Request Body:** 
 ```dart
 class PraiseInput {
@@ -33,6 +34,8 @@ class PraiseOutput {
   final String message = "Praise sent successfully";
 }
 ```
+</Accordion>
+
 
 
 ## Get praise by id
@@ -40,6 +43,8 @@ class PraiseOutput {
 **ROUTE:** /praise/:id <br/>
 **METHOD**: GET <br/>
 
+
+<Accordion title="Dados da requisição">
 **Response Body:** 
 ```json
 {
@@ -68,12 +73,17 @@ class PraiseOutput {
     },
 }
 ```
+</Accordion>
+
+
+
 
 ## Get praise by community
 
 **ROUTE:** /praise/community/:id <br/>
 **METHOD**: GET <br/>
 
+<Accordion title="Dados da requisição">
 **Response Body:** 
 ```json
 {
@@ -106,12 +116,16 @@ class PraiseOutput {
     ]
 }
 ```
+</Accordion>
+
+
+
 
 ## Get praise by user
 
 **ROUTE:** /praise/user/:id <br/>
 **METHOD**: GET <br/>
-
+<Accordion title="Dados da requisição">
 **QUERYSTRING** :
 ```json
 {
@@ -155,3 +169,7 @@ class PraiseOutput {
     ]
 }
 ```
+</Accordion>
+
+
+
