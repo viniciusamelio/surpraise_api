@@ -1,0 +1,128 @@
+# Users
+- Os usuários da aplicação do ponto de vista do domínio da aplicação. Toda parte de autenticação é a realizada por outra aplicação
+
+## New user
+
+**ROUTE:** /user/signup <br/>
+**METHOD**: POST <br/>
+
+<Accordion title="Dados da requisição">
+    **Dart Class Request Body:** 
+    ```dart
+    CreateUserInput({
+        required this.tag,
+        required this.name,
+        required this.email,
+    });
+    final String tag;
+    final String name;
+    final String email;
+    ```
+
+    **Dart Class Response Body:** 
+    ```dart
+    class CreateUserOutput {
+    CreateUserOutput({
+        required this.tag,
+        required this.name,
+        required this.email,
+        required this.id,
+    });
+    final String tag;
+    final String name;
+    final String email;
+    final String id;
+    }
+    ```
+</Accordion>
+
+## Edit user
+
+**ROUTE:** /user/signup <br/>
+**METHOD**: PUT <br/>
+
+<Accordion title="Dados da requisição">
+    **Dart Class Request Body:** 
+    ```dart
+        class EditUserInput {
+            const EditUserInput({
+                required this.tag,
+                required this.name,
+                required this.email,
+                required this.id,
+            });
+            final String tag;
+            final String name;
+            final String email;
+            final String id;
+        }
+    ```
+
+    **Dart Class Response Body:** 
+    ```dart
+    class EditUserOutput {
+        const EditUserOutput({
+            required this.tag,
+            required this.name,
+            required this.email,
+            required this.id,
+        });
+
+        final String tag;
+        final String name;
+        final String email;
+        final String id;
+    }
+    ```
+</Accordion>
+
+
+## Get user
+
+**ROUTE:** /user/:id <br/>
+**METHOD**: GET <br/>
+
+<Accordion title="Dados da requisição">
+
+    **Dart Class Response Body:** 
+    ```dart
+    class GetUserOutput {
+        GetUserOutput({
+            required this.tag,
+            required this.name,
+            required this.email,
+            required this.id,
+        });
+
+        final String tag;
+        final String name;
+        final String email;
+        final String id;
+    }
+    ```
+</Accordion>
+
+## Get user by tag
+
+**ROUTE:** /user/tag/:tag <br/>
+**METHOD**: GET <br/>
+
+<Accordion title="Dados da requisição">
+
+    **Dart Class Response Body:** 
+    ```dart
+    class GetUserOutput {
+        GetUserOutput({
+            required this.tag,
+            required this.name,
+            required this.email,
+            required this.id,
+        });
+
+        final String tag;
+        final String name;
+        final String email;
+        final String id;
+    }
+    ```
+</Accordion>
