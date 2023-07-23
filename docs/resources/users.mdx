@@ -6,8 +6,7 @@
 **ROUTE:** /user/signup <br/>
 **METHOD**: POST <br/>
 
-<Accordion title="Dados da requisição">
-    **Dart Class Request Body:** 
+<Accordion title="Dart Request Class">
     ```dart
     CreateUserInput({
         required this.tag,
@@ -18,21 +17,21 @@
     final String name;
     final String email;
     ```
-
-    **Dart Class Response Body:** 
+</Accordion>
+<Accordion title = "Dart Response Class">
     ```dart
-    class CreateUserOutput {
-    CreateUserOutput({
-        required this.tag,
-        required this.name,
-        required this.email,
-        required this.id,
-    });
-    final String tag;
-    final String name;
-    final String email;
-    final String id;
-    }
+        class CreateUserOutput {
+            CreateUserOutput({
+                required this.tag,
+                required this.name,
+                required this.email,
+                required this.id,
+            });
+            final String tag;
+            final String name;
+            final String email;
+            final String id;
+        }
     ```
 </Accordion>
 
@@ -41,8 +40,7 @@
 **ROUTE:** /user/signup <br/>
 **METHOD**: PUT <br/>
 
-<Accordion title="Dados da requisição">
-    **Dart Class Request Body:** 
+<Accordion title="Dart Request Class">
     ```dart
         class EditUserInput {
             const EditUserInput({
@@ -57,34 +55,31 @@
             final String id;
         }
     ```
+</Accordion>
+<Accordion title="Dart Response Class">
+     ```dart
+        class EditUserOutput {
+            const EditUserOutput({
+                required this.tag,
+                required this.name,
+                required this.email,
+                required this.id,
+            });
 
-    **Dart Class Response Body:** 
-    ```dart
-    class EditUserOutput {
-        const EditUserOutput({
-            required this.tag,
-            required this.name,
-            required this.email,
-            required this.id,
-        });
-
-        final String tag;
-        final String name;
-        final String email;
-        final String id;
-    }
+            final String tag;
+            final String name;
+            final String email;
+            final String id;
+        }
     ```
 </Accordion>
-
 
 ## Get user
 
 **ROUTE:** /user/:id <br/>
 **METHOD**: GET <br/>
 
-<Accordion title="Dados da requisição">
-
-    **Dart Class Response Body:** 
+<Accordion title="Dart Response Class">
     ```dart
     class GetUserOutput {
         GetUserOutput({
@@ -107,9 +102,7 @@
 **ROUTE:** /user/tag/:tag <br/>
 **METHOD**: GET <br/>
 
-<Accordion title="Dados da requisição">
-
-    **Dart Class Response Body:** 
+<Accordion title="Dart Response Class">
     ```dart
     class GetUserOutput {
         GetUserOutput({

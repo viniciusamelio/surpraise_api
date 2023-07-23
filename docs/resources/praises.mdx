@@ -7,33 +7,33 @@
 **ROUTE:** /praise <br/>
 **METHOD**: POST <br/>
 
-<Accordion title="Dados da requisição">
-**Dart Class Request Body:** 
-```dart
-class PraiseInput {
-  PraiseInput({
-    required this.commmunityId,
-    required this.message,
-    required this.praisedId,
-    required this.praiserId,
-    required this.topic,
-  });
+<Accordion title="Dart Request Class">
+    ```dart
+    class PraiseInput {
+        PraiseInput({
+            required this.commmunityId,
+            required this.message,
+            required this.praisedId,
+            required this.praiserId,
+            required this.topic,
+        });
 
-  final String commmunityId;
-  final String praiserId;
-  final String praisedId;
-  final String topic;
-  final String message;
-  late String id;
-}
-```
+        final String commmunityId;
+        final String praiserId;
+        final String praisedId;
+        final String topic;
+        final String message;
+        late String id;
+    }
+    ```
+</Accordion>
 
-**Dart Class Response Body:** 
-```dart
-class PraiseOutput {
-  final String message = "Praise sent successfully";
-}
-```
+<Accordion title="Dart Response Class">
+    ```dart
+        class PraiseOutput {
+            final String message = "Praise sent successfully";
+        }
+    ```
 </Accordion>
 
 
@@ -44,35 +44,34 @@ class PraiseOutput {
 **METHOD**: GET <br/>
 
 
-<Accordion title="Dados da requisição">
-**Response Body:** 
-```json
-{
-    "id": "uuid",
-    "praised_id": "uuid",
-    "praiser_id": "uuid",
-    "message": "message",
-    "community_id": "uuid",
-    "topic": "#topic",
-    "created_at": "isoString",
-    "community" : {
-        "title" : "title",
-        "id" : "uuid",
-    },
-    "praiser" : {
-        "tag": "@vinicius",
-        "name": "Vinicius Amélio",
-        "email": "vinicius@amelio.com",
-        "id": "b6bd72b4-16d4-4e1f-96a9-e199a4d5fe8f"
-    },
-    "praised" : {
-        "tag": "@irineu",
-        "name": "Irineu Nao Sabe Nem Eu",
-        "email": "irineu@nemeu.com",
-        "id": "b6bd72b4-12d4-4e1f-96a9-e199a4d5fe90"
-    },
-}
-```
+<Accordion title="Response">
+    ```json
+    {
+        "id": "uuid",
+        "praised_id": "uuid",
+        "praiser_id": "uuid",
+        "message": "message",
+        "community_id": "uuid",
+        "topic": "#topic",
+        "created_at": "isoString",
+        "community" : {
+            "title" : "title",
+            "id" : "uuid",
+        },
+        "praiser" : {
+            "tag": "@vinicius",
+            "name": "Vinicius Amélio",
+            "email": "vinicius@amelio.com",
+            "id": "b6bd72b4-16d4-4e1f-96a9-e199a4d5fe8f"
+        },
+        "praised" : {
+            "tag": "@irineu",
+            "name": "Irineu Nao Sabe Nem Eu",
+            "email": "irineu@nemeu.com",
+            "id": "b6bd72b4-12d4-4e1f-96a9-e199a4d5fe90"
+        },
+    }
+    ```
 </Accordion>
 
 
@@ -83,39 +82,38 @@ class PraiseOutput {
 **ROUTE:** /praise/community/:id <br/>
 **METHOD**: GET <br/>
 
-<Accordion title="Dados da requisição">
-**Response Body:** 
-```json
-{
-    "praises" : [
-        {
-            "id": "uuid",
-            "praised_id": "uuid",
-            "praiser_id": "uuid",
-            "message": "message",
-            "community_id": "uuid",
-            "topic": "#topic",
-            "created_at": "isoString",
-            "community" : {
-                "title" : "title",
-                "id" : "uuid",
-            },
-            "praiser" : {
-                "tag": "@vinicius",
-                "name": "Vinicius Amélio",
-                "email": "vinicius@amelio.com",
-                "id": "b6bd72b4-16d4-4e1f-96a9-e199a4d5fe8f"
-            },
-            "praised" : {
-                "tag": "@irineu",
-                "name": "Irineu Nao Sabe Nem Eu",
-                "email": "irineu@nemeu.com",
-                "id": "b6bd72b4-12d4-4e1f-96a9-e199a4d5fe90"
-            },
-        }
-    ]
-}
-```
+<Accordion title="Response">
+    ```json
+    {
+        "praises" : [
+            {
+                "id": "uuid",
+                "praised_id": "uuid",
+                "praiser_id": "uuid",
+                "message": "message",
+                "community_id": "uuid",
+                "topic": "#topic",
+                "created_at": "isoString",
+                "community" : {
+                    "title" : "title",
+                    "id" : "uuid",
+                },
+                "praiser" : {
+                    "tag": "@vinicius",
+                    "name": "Vinicius Amélio",
+                    "email": "vinicius@amelio.com",
+                    "id": "b6bd72b4-16d4-4e1f-96a9-e199a4d5fe8f"
+                },
+                "praised" : {
+                    "tag": "@irineu",
+                    "name": "Irineu Nao Sabe Nem Eu",
+                    "email": "irineu@nemeu.com",
+                    "id": "b6bd72b4-12d4-4e1f-96a9-e199a4d5fe90"
+                },
+            }
+        ]
+    }
+    ```
 </Accordion>
 
 
@@ -125,50 +123,51 @@ class PraiseOutput {
 
 **ROUTE:** /praise/user/:id <br/>
 **METHOD**: GET <br/>
-<Accordion title="Dados da requisição">
-**QUERYSTRING** :
-```json
-{
-    "asPraiser" : true
-}
-```
-```dart
-    bool? asPraiser
-```
-- Allows you to query praises filtering as praised/praiser role. If null, it will return everything from that community
+<Accordion title="Params">
+    **QUERYSTRING** :
+    ```json
+    {
+        "asPraiser" : true
+    }
+    ```
+    ```dart
+        bool? asPraiser
+    ```
+    - Allows you to query praises filtering as praised/praiser role. If null, it will return everything from that community
+</Accordion>
 
-**Response Body:** 
-```json
-{
-    "praises" : [
-        {
-            "id": "uuid",
-            "praised_id": "uuid",
-            "praiser_id": "uuid",
-            "message": "message",
-            "community_id": "uuid",
-            "topic": "#topic",
-            "created_at": "isoString",
-            "community" : {
-                "title" : "title",
-                "id" : "uuid",
-            },
-            "praiser" : {
-                "tag": "@vinicius",
-                "name": "Vinicius Amélio",
-                "email": "vinicius@amelio.com",
-                "id": "b6bd72b4-16d4-4e1f-96a9-e199a4d5fe8f"
-            },
-            "praised" : {
-                "tag": "@irineu",
-                "name": "Irineu Nao Sabe Nem Eu",
-                "email": "irineu@nemeu.com",
-                "id": "b6bd72b4-12d4-4e1f-96a9-e199a4d5fe90"
-            },
-        }
-    ]
-}
-```
+<Accordion title="Response">
+    ```json
+    {
+        "praises" : [
+            {
+                "id": "uuid",
+                "praised_id": "uuid",
+                "praiser_id": "uuid",
+                "message": "message",
+                "community_id": "uuid",
+                "topic": "#topic",
+                "created_at": "isoString",
+                "community" : {
+                    "title" : "title",
+                    "id" : "uuid",
+                },
+                "praiser" : {
+                    "tag": "@vinicius",
+                    "name": "Vinicius Amélio",
+                    "email": "vinicius@amelio.com",
+                    "id": "b6bd72b4-16d4-4e1f-96a9-e199a4d5fe8f"
+                },
+                "praised" : {
+                    "tag": "@irineu",
+                    "name": "Irineu Nao Sabe Nem Eu",
+                    "email": "irineu@nemeu.com",
+                    "id": "b6bd72b4-12d4-4e1f-96a9-e199a4d5fe90"
+                },
+            }
+        ]
+    }
+    ```
 </Accordion>
 
 
