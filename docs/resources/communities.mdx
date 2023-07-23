@@ -6,43 +6,43 @@
 **ROUTE:** /community <br/>
 **METHOD**: POST <br/>
 
-<Accordion title="Dados da requisição">
-**Dart Class Request Body:** 
-```dart
-class CreateCommunityInput {
-    CreateCommunityInput({
-        this.id,
-        required this.description,
-        required this.ownerId,
-        required this.title,
-        this.planMemberLimit = 50,
-    });
-    String? id;
-    String ownerId;
-    String description;
-    String title;
-    int planMemberLimit;
-}
-```
+<Accordion title="Dart Request Class">
+    ```dart
+        class CreateCommunityInput {
+            CreateCommunityInput({
+                this.id,
+                required this.description,
+                required this.ownerId,
+                required this.title,
+                this.planMemberLimit = 50,
+            });
+            String? id;
+            String ownerId;
+            String description;
+            String title;
+            int planMemberLimit;
+        }
+    ```
+</Accordion>
 
-**Dart Class Response Body:** 
-```dart
-class CreateCommunityOutput {
-  CreateCommunityOutput({
-    required this.id,
-    required this.description,
-    required this.title,
-    required this.members,
-    required this.ownerId,
-  });
+<Accordion title="Dart Response Class">
+    ```dart
+    class CreateCommunityOutput {
+        CreateCommunityOutput({
+            required this.id,
+            required this.description,
+            required this.title,
+            required this.members,
+            required this.ownerId,
+        });
 
-  final String id;
-  final String ownerId;
-  final String description;
-  final String title;
-  final List<Map> members;
-}
-```
+        final String id;
+        final String ownerId;
+        final String description;
+        final String title;
+        final List<Map> members;
+        }
+    ```
 </Accordion>
 
 ## Delete community
@@ -50,16 +50,14 @@ class CreateCommunityOutput {
 **ROUTE:** /community/:id <br/>
 **METHOD**: DELETE <br/>
 
-<Accordion title="Dados da requisição">
-**Dart Class Response Body:** 
-
-```dart
-class DeleteCommunityOutput {
-  DeleteCommunityOutput({required String communityId})
-      : message = "Community $communityId deleted";
-  final String message;
-}
-```
+<Accordion title="Response">
+    ```dart
+    class DeleteCommunityOutput {
+    DeleteCommunityOutput({required String communityId})
+        : message = "Community $communityId deleted";
+    final String message;
+    }
+    ```
 </Accordion>
 
 ## Get community
@@ -67,22 +65,100 @@ class DeleteCommunityOutput {
 **ROUTE:** /community/:id <br/>
 **METHOD**: GET <br/>
 
-<Accordion title="Dados da requisição">
-**Response Body:**
+<Accordion title="Response">
+    ```json
+    {
+        "id" : "uuid",
+        "ownerId": "uuid",
+        "description" : "description",
+        "title" : "title",
+        "members" : [
+            {
+                "member_id" : "uuid",
+                "community_id" : "uuid",
+                "role" : "member|owner"
+            }
+        ]
+    }
+    ```
+</Accordion>
 
-```json
-{
-    "id" : "uuid",
-    "ownerId": "uuid",
-    "description" : "description",
-    "title" : "title",
-    "members" : [
-        {
-            "member_id" : "uuid",
-            "community_id" : "uuid",
-            "role" : "member|owner"
-        }
-    ]
-}
-```
+## Get communities by user
+
+**ROUTE:** /community/user/:userId <br/>
+**METHOD**: GET <br/>
+
+<Accordion title="Response">
+    ```json
+    {
+        "communities": [
+            {
+                "id" : "uuid",
+                "ownerId": "uuid",
+                "description" : "description",
+                "title" : "title",
+                "members" : [
+                    {
+                        "member_id" : "uuid",
+                        "community_id" : "uuid",
+                        "role" : "member|owner"
+                    }
+                ]
+            }
+        ]
+    }
+    ```
+</Accordion>
+
+## Add members
+
+**ROUTE:** /community/members <br/>
+**METHOD**: POST <br/>
+
+<Accordion title="Request">
+    ```json
+    {
+        "idCommunity" : "uuid",
+        "members" : [
+            {
+                "idMember" : "uuid",
+                "role" : "member"
+            }
+        ]
+    }
+    ```
+</Accordion>
+
+<Accordion title="Response">
+    ```dart
+    class AddMembersOutput {
+    String message = "Member(s) added successfully";
+    }
+    ```
+</Accordion>
+
+## Remove members
+
+**ROUTE:** /community/members/remove <br/>
+**METHOD**: PATCH <br/>
+
+<Accordion title="Request">
+    ```json
+    {
+        "idCommunity" : "uuid",
+        "memberIds" : [
+            "uuid",
+            "uuid2",
+            "uuid3"
+        ]
+    }
+    ```
+</Accordion>
+
+<Accordion title="Response">
+    ```dart
+    class RemoveMembersOutput {
+        final String message = "Members removed successfully";
+    }
+    ```
 </Accordion>
