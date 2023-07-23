@@ -4,12 +4,154 @@
 
 ## New praise
 
-### [Post] - /praise/
-Body: 
-```json
-{
-    "teste" : "teste"
+**ROUTE:** /praise <br/>
+**METHOD**: POST <br/>
+
+**Dart Class Request Body:** 
+```dart
+class PraiseInput {
+  PraiseInput({
+    required this.commmunityId,
+    required this.message,
+    required this.praisedId,
+    required this.praiserId,
+    required this.topic,
+  });
+
+  final String commmunityId;
+  final String praiserId;
+  final String praisedId;
+  final String topic;
+  final String message;
+  late String id;
 }
 ```
 
-<Accordion title="Click me to expand the accordion">This is collapsible content!</Accordion>
+**Dart Class Response Body:** 
+```dart
+class PraiseOutput {
+  final String message = "Praise sent successfully";
+}
+```
+
+
+## Get praise by id
+
+**ROUTE:** /praise/:id <br/>
+**METHOD**: GET <br/>
+
+**Response Body:** 
+```json
+{
+    "id": "uuid",
+    "praised_id": "uuid",
+    "praiser_id": "uuid",
+    "message": "message",
+    "community_id": "uuid",
+    "topic": "#topic",
+    "created_at": "isoString",
+    "community" : {
+        "title" : "title",
+        "id" : "uuid",
+    },
+    "praiser" : {
+        "tag": "@vinicius",
+        "name": "Vinicius Amélio",
+        "email": "vinicius@amelio.com",
+        "id": "b6bd72b4-16d4-4e1f-96a9-e199a4d5fe8f"
+    },
+    "praised" : {
+        "tag": "@irineu",
+        "name": "Irineu Nao Sabe Nem Eu",
+        "email": "irineu@nemeu.com",
+        "id": "b6bd72b4-12d4-4e1f-96a9-e199a4d5fe90"
+    },
+}
+```
+
+## Get praise by community
+
+**ROUTE:** /praise/community/:id <br/>
+**METHOD**: GET <br/>
+
+**Response Body:** 
+```json
+{
+    "praises" : [
+        {
+            "id": "uuid",
+            "praised_id": "uuid",
+            "praiser_id": "uuid",
+            "message": "message",
+            "community_id": "uuid",
+            "topic": "#topic",
+            "created_at": "isoString",
+            "community" : {
+                "title" : "title",
+                "id" : "uuid",
+            },
+            "praiser" : {
+                "tag": "@vinicius",
+                "name": "Vinicius Amélio",
+                "email": "vinicius@amelio.com",
+                "id": "b6bd72b4-16d4-4e1f-96a9-e199a4d5fe8f"
+            },
+            "praised" : {
+                "tag": "@irineu",
+                "name": "Irineu Nao Sabe Nem Eu",
+                "email": "irineu@nemeu.com",
+                "id": "b6bd72b4-12d4-4e1f-96a9-e199a4d5fe90"
+            },
+        }
+    ]
+}
+```
+
+## Get praise by user
+
+**ROUTE:** /praise/user/:id <br/>
+**METHOD**: GET <br/>
+
+**QUERYSTRING** :
+```json
+{
+    "asPraiser" : true
+}
+```
+```dart
+    bool? asPraiser
+```
+- Allows you to query praises filtering as praised/praiser role. If null, it will return everything from that community
+
+**Response Body:** 
+```json
+{
+    "praises" : [
+        {
+            "id": "uuid",
+            "praised_id": "uuid",
+            "praiser_id": "uuid",
+            "message": "message",
+            "community_id": "uuid",
+            "topic": "#topic",
+            "created_at": "isoString",
+            "community" : {
+                "title" : "title",
+                "id" : "uuid",
+            },
+            "praiser" : {
+                "tag": "@vinicius",
+                "name": "Vinicius Amélio",
+                "email": "vinicius@amelio.com",
+                "id": "b6bd72b4-16d4-4e1f-96a9-e199a4d5fe8f"
+            },
+            "praised" : {
+                "tag": "@irineu",
+                "name": "Irineu Nao Sabe Nem Eu",
+                "email": "irineu@nemeu.com",
+                "id": "b6bd72b4-12d4-4e1f-96a9-e199a4d5fe90"
+            },
+        }
+    ]
+}
+```
