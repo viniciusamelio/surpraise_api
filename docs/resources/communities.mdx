@@ -1,0 +1,88 @@
+# Communities
+- Comunidades são grupos de usuários, recurso necessário para que aja interação entre os mesmos, através dos praises
+
+## New community
+
+**ROUTE:** /community <br/>
+**METHOD**: POST <br/>
+
+<Accordion title="Dados da requisição">
+**Dart Class Request Body:** 
+```dart
+class CreateCommunityInput {
+    CreateCommunityInput({
+        this.id,
+        required this.description,
+        required this.ownerId,
+        required this.title,
+        this.planMemberLimit = 50,
+    });
+    String? id;
+    String ownerId;
+    String description;
+    String title;
+    int planMemberLimit;
+}
+```
+
+**Dart Class Response Body:** 
+```dart
+class CreateCommunityOutput {
+  CreateCommunityOutput({
+    required this.id,
+    required this.description,
+    required this.title,
+    required this.members,
+    required this.ownerId,
+  });
+
+  final String id;
+  final String ownerId;
+  final String description;
+  final String title;
+  final List<Map> members;
+}
+```
+</Accordion>
+
+## Delete community
+
+**ROUTE:** /community/:id <br/>
+**METHOD**: DELETE <br/>
+
+<Accordion title="Dados da requisição">
+**Dart Class Response Body:** 
+
+```dart
+class DeleteCommunityOutput {
+  DeleteCommunityOutput({required String communityId})
+      : message = "Community $communityId deleted";
+  final String message;
+}
+```
+</Accordion>
+
+## Get community
+
+**ROUTE:** /community/:id <br/>
+**METHOD**: GET <br/>
+
+<Accordion title="Dados da requisição">
+**Response Body:**
+
+```json
+{
+    "id" : "uuid",
+    "ownerId": "uuid",
+    "description" : "description",
+    "title" : "title",
+    "members" : [
+        {
+            "member_id" : "uuid",
+            "community_id" : "uuid",
+            "role" : "member|owner"
+        }
+    ]
+}
+```
+</Accordion>

@@ -6,7 +6,8 @@
       ["Contato", "/contact"],
       ["API", [
           ["Praises", "/resources/praises"],
-          ["Users", "/resources/users"]
+          ["Users", "/resources/users"],
+          ["Communities", "/resources/communities"]
         ]
       ]
     ]
