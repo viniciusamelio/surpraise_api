@@ -2,9 +2,12 @@ import 'dart:io';
 
 abstract class Env {
   static late String mongoUrl;
+  static late String supabaseKey;
+  static late String supabaseUrl;
 
   static Future<void> init([bool test = false]) async {
-    mongoUrl = Platform.environment["mongo_url"] ??
-        String.fromEnvironment("mongo_url");
+    mongoUrl = "mongodb://localhost:27017";
+    supabaseKey = String.fromEnvironment("SUPABASE_KEY");
+    supabaseUrl = String.fromEnvironment("SUPABASE_URL");
   }
 }

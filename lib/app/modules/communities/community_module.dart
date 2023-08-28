@@ -1,9 +1,15 @@
 import 'package:scouter/scouter.dart';
+import 'package:surpraise_api/app/core/middlewares/auth_middleware.dart';
 import 'package:surpraise_api/app/modules/communities/controllers/community_controller.dart';
 import 'package:surpraise_core/surpraise_core.dart';
 import 'package:surpraise_infra/surpraise_infra.dart';
 
 class CommunityModule extends Module with Injectable {
+  @override
+  List<HttpMiddleware> get middlewares => [
+        injected<AuthMidleware>(),
+      ];
+
   @override
   List<RestController> get controllers => [
         CommunityController(),
