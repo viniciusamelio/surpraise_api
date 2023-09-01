@@ -11,7 +11,7 @@ class AuthMidleware extends HttpMiddleware {
   @override
   Future<Either<HttpResponse, void>> handle(HttpRequest request) async {
     final canGoOn = await _authProvider.checkSession(
-      refreshToken: request.headers["refreshToken"],
+      sessionJson: request.headers["session"],
     );
     if (canGoOn.isRight()) {
       return right(null);

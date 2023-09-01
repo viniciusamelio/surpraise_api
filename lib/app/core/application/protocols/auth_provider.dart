@@ -2,7 +2,7 @@ import 'package:scouter/scouter.dart';
 
 abstract class AuthProvider {
   Future<Either<Exception, String>> checkSession({
-    required String refreshToken,
+    required String sessionJson,
   });
 
   Future<Either<Exception, String>> renewSession({

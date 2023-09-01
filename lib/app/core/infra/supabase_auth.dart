@@ -11,15 +11,15 @@ class SupabaseAuthProvider implements AuthProvider {
 
   @override
   Future<Either<Exception, String>> checkSession({
-    required String refreshToken,
+    required String sessionJson,
   }) async {
     try {
-      final response = await client.auth.setSession(refreshToken);
-      if (response.session == null) {
-        return left(AuthException("Session expired"));
+      final response = await client.auth.recoverSession(sessionJson);
+      if (response.session == null || response.session!.isExpired) {
+        return Left(Exception("Session expired"));
       }
 
-      if (response.session!.expiresIn! < 120) {
+      if (response.session!.expiresIn! < 200) {
         final newSession = await client.auth.refreshSession();
         return Right(
           newSession.session!.refreshToken ?? newSession.session!.accessToken,
@@ -30,7 +30,7 @@ class SupabaseAuthProvider implements AuthProvider {
         response.session!.refreshToken ?? response.session!.accessToken,
       );
     } catch (e) {
-      return left(AuthException("Session expired"));
+      return Left(Exception("Session expired"));
     }
   }
 
@@ -41,7 +41,7 @@ class SupabaseAuthProvider implements AuthProvider {
     final response = await client.auth.recoverSession(sessionJson);
 
     if (response.session == null) {
-      return left(AuthException("Session expired"));
+      return Left(Exception("Session expired"));
     }
 
     final newSession = await client.auth.refreshSession();
